@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     @IBAction func proto_tapped(_ sender: Any) {
         let user = User.generatePerson()
         if let data = User.generateByte(person: user) {
-            print(String(bytes: data, encoding: String.Encoding.utf8) ?? "")
+            let x = [UInt8] (data)
+            print(x)
         }
     }
 }

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.mastercard.protobuf";
+option java_outer_classname = "StudentProto";
+
+message Student {
+	int32 grade = 1;
+	repeated SchoolSubject enrolled = 2;
+
+	message SchoolSubject {
+    string name = 1;
+    int32 classroom = 2;
+  }
+}

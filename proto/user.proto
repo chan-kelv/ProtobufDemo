@@ -1,12 +1,14 @@
 syntax = "proto3";
 
 option java_package = "com.mastercard.protobuf";
-option java_outer_classname = "UserProto";
+option java_outer_classname = "PersonProto";
 
 message Person {
-  string name = 1;
-  int32 id = 2;
+  string name = 1; // full
+  int32 age = 2;
   string email = 3;
+  repeated PhoneNumber phones = 4;
+  bool registered = 5;
 
   enum PhoneType {
     HOME = 0;
@@ -18,10 +20,4 @@ message Person {
     string number = 1;
     PhoneType type = 2;
   }
-
-  repeated PhoneNumber phones = 4;
-}
-
-message AddressBook {
-  repeated Person people = 1;
 }
