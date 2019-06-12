@@ -8,6 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.mastercard.protobuf.PersonProto;
+import com.mastercard.protobuf.StudentProto;
+
 import java.util.List;
 
 public class PersonRecyclerAdapter extends RecyclerView.Adapter<PersonRecyclerAdapter.PersonViewHolder> {
@@ -50,6 +55,25 @@ public class PersonRecyclerAdapter extends RecyclerView.Adapter<PersonRecyclerAd
         schoolPeople.add(person);
         notifyDataSetChanged();
     }
+
+    void addStudent (ByteString personByte, byte[] studentByte) {
+        PersonProto.Person person = null;
+        StudentProto.Student student = null;
+        try {
+            person = PersonProto.Person.parseFrom(personByte);
+            if (person != null) {
+                student = StudentProto.Student.parseFrom(studentByte);
+            }
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+
+        if (student != null) {
+            addPerson(new Student(student, person));
+        }
+    }
+
+
 
     public class PersonViewHolder extends RecyclerView.ViewHolder {
         TextView name;

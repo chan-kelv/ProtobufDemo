@@ -30,6 +30,7 @@ public class CreateUserFragment extends Fragment {
         ViewGroup group = (ViewGroup) inflater.inflate(R.layout.fragment_create_use, container, false);
         createPersonRecycleView = group.findViewById(R.id.recycler_person_list);
 
+        // register students from the form
         registerBttn = group.findViewById(R.id.btn_register);
         registerBttn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +81,8 @@ public class CreateUserFragment extends Fragment {
                 .build();
 
         // Student 1
-        StudentProto.Student.Builder studentBuilder1 = StudentProto.Student.newBuilder();
-        StudentProto.Student studentProto1 = studentBuilder1
+        StudentProto.Student.Builder studentBuilder = StudentProto.Student.newBuilder();
+        StudentProto.Student studentProto = studentBuilder
                 .setGrade(grade)
                 .addEnrolled(mathSubject)
                 .addEnrolled(englishSubject)
@@ -97,8 +98,7 @@ public class CreateUserFragment extends Fragment {
                 .setEmail(email)
                 .addPhones(phoneNumber)
                 .build();
-        Student student1 = new Student(studentProto1, personProto);
 
-        ((PersonRecyclerAdapter)createPersonRecycleView.getAdapter()).addPerson(student1);
+        ((PersonRecyclerAdapter)createPersonRecycleView.getAdapter()).addStudent(personProto.toByteString(), studentProto.toByteArray());
     }
 }

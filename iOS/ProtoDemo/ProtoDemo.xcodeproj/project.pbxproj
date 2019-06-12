@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		528A986022B040E800C75BAF /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A985F22B040E800C75BAF /* user.pb.swift */; };
 		52B2187122A9B8420020F3A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2187022A9B8420020F3A2 /* AppDelegate.swift */; };
 		52B2187322A9B8420020F3A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2187222A9B8420020F3A2 /* ViewController.swift */; };
 		52B2187622A9B8420020F3A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B2187422A9B8420020F3A2 /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		52B2188622A9BC0B0020F3A2 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2188422A9BBF50020F3A2 /* SwiftProtobuf.framework */; };
 		52B2188722A9BC0B0020F3A2 /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2188422A9BBF50020F3A2 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		52B2188A22A9BC340020F3A2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2188922A9BC340020F3A2 /* User.swift */; };
-		52B2188E22A9DAC20020F3A2 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2188D22A9DAC20020F3A2 /* user.pb.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		528A985F22B040E800C75BAF /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = user.pb.swift; path = ../../../proto/user.pb.swift; sourceTree = "<group>"; };
 		52B2186D22A9B8420020F3A2 /* ProtoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B2187022A9B8420020F3A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B2187222A9B8420020F3A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		52B2187C22A9B8450020F3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B2188422A9BBF50020F3A2 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = "<group>"; };
 		52B2188922A9BC340020F3A2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		52B2188D22A9DAC20020F3A2 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.pb.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 		52B2186F22A9B8420020F3A2 /* ProtoDemo */ = {
 			isa = PBXGroup;
 			children = (
-				52B2188D22A9DAC20020F3A2 /* user.pb.swift */,
+				528A985F22B040E800C75BAF /* user.pb.swift */,
 				52B2187022A9B8420020F3A2 /* AppDelegate.swift */,
 				52B2187222A9B8420020F3A2 /* ViewController.swift */,
 				52B2187422A9B8420020F3A2 /* Main.storyboard */,
@@ -165,7 +165,7 @@
 			files = (
 				52B2188A22A9BC340020F3A2 /* User.swift in Sources */,
 				52B2187322A9B8420020F3A2 /* ViewController.swift in Sources */,
-				52B2188E22A9DAC20020F3A2 /* user.pb.swift in Sources */,
+				528A986022B040E800C75BAF /* user.pb.swift in Sources */,
 				52B2187122A9B8420020F3A2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

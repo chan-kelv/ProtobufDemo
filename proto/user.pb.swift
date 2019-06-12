@@ -24,13 +24,16 @@ struct Person {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// full
   var name: String = String()
 
-  var id: Int32 = 0
+  var age: Int32 = 0
 
   var email: String = String()
 
   var phones: [Person.PhoneNumber] = []
+
+  var registered: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -95,36 +98,26 @@ extension Person.PhoneType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct AddressBook {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var people: [Person] = []
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension Person: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = "Person"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
-    2: .same(proto: "id"),
+    2: .same(proto: "age"),
     3: .same(proto: "email"),
     4: .same(proto: "phones"),
+    5: .same(proto: "registered"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.name)
-      case 2: try decoder.decodeSingularInt32Field(value: &self.id)
+      case 2: try decoder.decodeSingularInt32Field(value: &self.age)
       case 3: try decoder.decodeSingularStringField(value: &self.email)
       case 4: try decoder.decodeRepeatedMessageField(value: &self.phones)
+      case 5: try decoder.decodeSingularBoolField(value: &self.registered)
       default: break
       }
     }
@@ -134,8 +127,8 @@ extension Person: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
     }
-    if self.id != 0 {
-      try visitor.visitSingularInt32Field(value: self.id, fieldNumber: 2)
+    if self.age != 0 {
+      try visitor.visitSingularInt32Field(value: self.age, fieldNumber: 2)
     }
     if !self.email.isEmpty {
       try visitor.visitSingularStringField(value: self.email, fieldNumber: 3)
@@ -143,14 +136,18 @@ extension Person: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     if !self.phones.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.phones, fieldNumber: 4)
     }
+    if self.registered != false {
+      try visitor.visitSingularBoolField(value: self.registered, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Person, rhs: Person) -> Bool {
     if lhs.name != rhs.name {return false}
-    if lhs.id != rhs.id {return false}
+    if lhs.age != rhs.age {return false}
     if lhs.email != rhs.email {return false}
     if lhs.phones != rhs.phones {return false}
+    if lhs.registered != rhs.registered {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -194,35 +191,6 @@ extension Person.PhoneNumber: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   static func ==(lhs: Person.PhoneNumber, rhs: Person.PhoneNumber) -> Bool {
     if lhs.number != rhs.number {return false}
     if lhs.type != rhs.type {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension AddressBook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "AddressBook"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "people"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.people)
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.people.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.people, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: AddressBook, rhs: AddressBook) -> Bool {
-    if lhs.people != rhs.people {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
